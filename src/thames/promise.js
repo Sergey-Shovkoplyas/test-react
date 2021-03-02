@@ -1,6 +1,6 @@
-console.log("data request");
+/* console.log("data request");
 
-/*let p = new Promise((resolve, reject) => {
+let p = new Promise((resolve, reject) => {
     setTimeout(() => {
         let data = {
             name: "Serg",
@@ -42,6 +42,7 @@ console.log("data request");
 
 // ----------------- all, race ----------------
 
+/*
 let p1 = new Promise((resolve, reject) => {
     setTimeout(() => {
         console.log("1 promise done!");
@@ -63,3 +64,4 @@ Promise.all([p1, p2]).then(() => {
 Promise.race([p1, p2]).then(() => {
     console.log("FIRST promice DONE!!!")
 });
+*/
