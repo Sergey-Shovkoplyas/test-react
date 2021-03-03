@@ -2,13 +2,14 @@ import {CHANGE_THEME, DECREMENT, INCREMENT} from "./types";
 import {combineReducers} from "redux";
 
 function counterReducer(state = 0, action) {
-    if (action.type === INCREMENT) {
-        return state + 1;
-    } else if (action.type === DECREMENT) {
-        return state - 1;
+    switch (action.type) {
+        case INCREMENT:
+            return state + 1;
+        case DECREMENT:
+            return  state -1;
+        default:
+            return state
     }
-
-    return state;
 }
 
 const initialThemeState = {
