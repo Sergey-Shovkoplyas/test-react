@@ -1,4 +1,4 @@
-import {createStore, applyMiddleware} from 'redux';
+import {createStore, applyMiddleware, compose} from 'redux';
 import thunk from 'redux-thunk';
 
 import {rootReducer} from "../redux/rootReducer"
@@ -12,7 +12,10 @@ const btnTheme = document.getElementById('theme');
 
 const store = createStore(
     rootReducer,
-    applyMiddleware(thunk));
+    compose(
+        applyMiddleware(thunk),
+        window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
+    ));
 
 btnAdd.addEventListener('click', () => {
     store.dispatch(increment())
@@ -34,7 +37,9 @@ store.subscribe(() => {
     console.log(state);
     counter.textContent = state.counter;
     document.body.className = state.theme.value;
-
+    [btnAdd, btnSub, btnTheme, btnAsync].forEach(btn => {
+        btn.disabled = state.theme.disabled
+    })
 })
 
 store.dispatch({type: '_INIT_'});
